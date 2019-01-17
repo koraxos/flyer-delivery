@@ -1,0 +1,47 @@
+md-content.content(ng-style="{'width': '97%'}")
+	form.form-horizontal(ng-submit="saveClient(false)")
+		fieldset.scheduler-border
+			legend.scheduler-border 4. {{ langData[25] }}
+			br
+			div.form-group.row
+				label.col-sm-3.control-label(for="entreprise") {{ langData[26] }} *
+				div.col-sm-8
+					input.form-control(required, id="entreprise", ng-model="client.entreprise")
+			div.form-group.row
+				label.col-sm-3.control-label(for="adresse") {{ langData[27] }} *
+				div.col-sm-8
+					input.form-control(required, id="adresse", ng-model="client.adresse")
+			div.form-group.row
+				label.col-sm-3.control-label(for="ville") {{ langData[28] }} *
+				div.col-sm-8
+					input.form-control(required, id="ville", ng-model="client.ville")
+			div.form-group.row
+				label.col-sm-3.control-label(for="pays") {{ langData[29] }} *
+				div.col-sm-8
+					input.form-control(required, id="pays", ng-model="client.pays")
+			div.form-group.row
+				label.col-sm-3.control-label(for="activite") {{ langData[30] }}
+				div.col-sm-8
+					input.form-control(id="activite", ng-model="client.activite")
+			div.form-group.row
+				label.col-sm-3.control-label(for="telephone") {{ langData[31] }} *
+				div.col-sm-8
+					input.form-control(type="tel", required, id="telephone", ng-model="client.telephone" )
+			div.form-group.row
+				label.col-sm-3.control-label(for="email") {{ langData[32] }} *
+				div.col-sm-8
+					input.form-control(required, type="email", id="email", ng-model="client.email")
+			div.form-group.row
+				label.col-sm-3.control-label(for="tva") {{ langData[33] }}
+				div.col-sm-8
+					input.form-control(type="text", id="tva", ng-model="client.numTva")
+			div.form-group.row
+				label.col-sm-3.control-label(for="tva") {{ langData[34] }}
+				div.col-sm-8
+					input.form-control(id="tva", type="text", ng-model="client.numTvaIntra")
+
+		div.row.center-buttons
+			button.btn.btn-lg.btn-danger(ng-click="saveClient('/accueil')") {{ langData[37] }}
+			button.btn.btn-lg.btn-success.ng-hide(ng-show="commande.total>0", type="submit", ng-click="path='/paiement'") {{ langData[35] }}
+			button.btn.btn-lg.btn-info(ng-hide="commande.total>0", type="submit", ng-click="path='/validation'") {{ langData[36] }}
+			
