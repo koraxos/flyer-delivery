@@ -18,3 +18,13 @@
 - Une fois l'installation des zones faites, remettez seed sur false ! 
 
 ** Enjoy ! **
+
+# Carte
+
+<path id="ville"/> 
+
+# data
+modifier 
+	- Commune.tsv
+	- price.csv
+
