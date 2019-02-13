@@ -1,6 +1,5 @@
 "use strict";
 
-console.log("TEST sqdlksqjdlkj");
 myApp.directive("d3Map", [
   "$timeout",
   "$window",
@@ -30,7 +29,8 @@ myApp.directive("d3Map", [
           height = scope.height === undefined ? 2000 : scope.height,
           height = height - margin.top - margin.bottom,
           map = scope.map === undefined ? "Luxembourg.svg" : scope.map,
-          cities = scope.cities === undefined ? "Commune.tsv" : scope.cities,
+          cities =
+            scope.cities === undefined ? "Commune.metz.next.tsv" : scope.cities,
           regions = scope.regions === undefined ? new Array() : scope.regions;
 
         scope.data = null;
@@ -187,8 +187,6 @@ myApp.directive("d3Map", [
               // });
 
               // Couleur des zones
-
-              console.log("scope.paths", scope.paths); /*RemoveLogging:skip*/
               scope.paths.forEach(function(p) {
                 var id = p.attr("id");
                 var data = scope.data[id];
@@ -252,7 +250,6 @@ myApp.directive("d3Map", [
         );
 
         scope.render = function(map) {
-          console.log("MAPPPP", map);
           if (map === undefined) return;
 
           var g = svg
@@ -262,8 +259,6 @@ myApp.directive("d3Map", [
               "translate(" + margin.left + "," + margin.top + ")"
             )
             .attr("class", "map");
-
-          console.log("SVG", g);
           $timeout(function() {
             d3.xml(map)
               .mimeType("image/svg+xml")
@@ -276,7 +271,6 @@ myApp.directive("d3Map", [
                 });
                 var pathCoords = new Array();
 
-                debugger;
                 // Création des elements / Paths
                 for (var i = 0; i < elts.length; i++) {
                   var d = elts[i].getAttribute("d"),
@@ -477,7 +471,7 @@ myApp.directive("d3Map", [
 
                 // Gestion de la souris
 
-                g.selectAll("path, polygon")
+                g.selectAll("path")
                   .on("mouseover", function(d, i) {
                     d3.select(this).attr("fill", "orange");
                     var circle = d3.select(this).select("circle");
@@ -541,7 +535,7 @@ myApp.directive("d3Map", [
                       d3.select(this).attr("class", "pathActive");
 
                       if (data["region"] == "Centre / zentrum")
-                        d3.select(paththis).attr("fill", colorCentre);
+                        d3.select(this).attr("fill", colorCentre);
                       else if (data["region"] == "Est / osten")
                         d3.select(this).attr("fill", colorEst);
                       else if (data["region"] == "Sud / suden")
