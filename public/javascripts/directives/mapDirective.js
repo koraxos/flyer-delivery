@@ -29,8 +29,7 @@ myApp.directive("d3Map", [
           height = scope.height === undefined ? 2000 : scope.height,
           height = height - margin.top - margin.bottom,
           map = scope.map === undefined ? "Luxembourg.svg" : scope.map,
-          cities =
-            scope.cities === undefined ? "Commune.metz.next.tsv" : scope.cities,
+          cities = scope.cities === undefined ? "Commune.tsv" : scope.cities,
           regions = scope.regions === undefined ? new Array() : scope.regions;
 
         scope.data = null;
@@ -217,14 +216,17 @@ myApp.directive("d3Map", [
 
               // Recherche de régions Entierement Actives
 
-              var regions = new Array(
-                "Centre / zentrum",
-                "Est / osten",
-                "Sud / suden",
-                "Nord / norden"
-              );
+              var regions = [
+                "ouest",
+                "nord",
+                "est",
+                "sud / est",
+                "sud",
+                "sud / ouest"
+              ];
 
               regions.forEach(function(reg) {
+                console.log("reg");
                 var nb = scope.paths.filter(function(path) {
                   var id = path.attr("id");
                   var data = scope.data[id];
@@ -252,13 +254,7 @@ myApp.directive("d3Map", [
         scope.render = function(map) {
           if (map === undefined) return;
 
-          var g = svg
-            .append("g")
-            .attr(
-              "transform",
-              "translate(" + margin.left + "," + margin.top + ")"
-            )
-            .attr("class", "map");
+          var g = svg.append("g").attr("class", "map");
           $timeout(function() {
             d3.xml(map)
               .mimeType("image/svg+xml")
@@ -284,6 +280,7 @@ myApp.directive("d3Map", [
                     .attr("stroke", "black")
                     .attr("id", id)
                     .attr("class", "pathRegion");
+                  if (!scope.data[id]) debugger;
                   var region = scope.data[id];
                   scope.paths.push(path);
                   // choix des zones
@@ -347,10 +344,12 @@ myApp.directive("d3Map", [
                   "Sud / suden",
                   "Nord / norden"
                 );
+
                 regions.forEach(function(reg) {
                   var nb = scope.paths.filter(function(path) {
                     var id = path.attr("id");
                     var data = scope.data[id];
+                    if (!data) debugger;
                     return data["region"] == reg;
                   }).length;
                   var nbActif = scope.zonesData.filter(function(zone) {
@@ -376,7 +375,7 @@ myApp.directive("d3Map", [
                 g.attr(
                   "transform",
                   "translate(" +
-                    minX * 1.1 +
+                    minX * -0.9 +
                     ",-" +
                     minY * 0.1 +
                     ") scale(0.95,1)"
@@ -486,9 +485,11 @@ myApp.directive("d3Map", [
                       var villeName = d["Ville"].replace("_", " ");
                       villeName =
                         villeName[0].toUpperCase() + villeName.substr(1);
+                      //
+                      // villeName = region.text(d["region"]);
+                      // villeName[0].toUpperCase() + villeName.substr(1);
 
                       ville.text(villeName);
-                      region.text(d["region"]);
                       brut.text("Brut : " + d["brut"]);
                       net.text("Net : " + d["net"]);
                       if (d["region"] == "Centre / zentrum")
