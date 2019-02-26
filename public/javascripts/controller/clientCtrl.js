@@ -168,24 +168,51 @@ myApp.controller("accueilCtrl", [
     };
 
     $scope.changeMap = function(e) {
-      console.log("LOOOOGGG");
       $scope.regions = new Array();
-      if ($scope.national) {
-        $scope.nord = true;
-        $scope.est = true;
-        $scope.sud = true;
-        $scope.centre = true;
-      } else if (e && e.target.id == "national") {
-        $scope.nord = false;
-        $scope.est = false;
-        $scope.sud = false;
-        $scope.centre = false;
-      }
+      console.log("LOOG", $scope);
 
-      if ($scope.nord) $scope.regions.push("Nord / norden");
-      if ($scope.est) $scope.regions.push("Est / osten");
-      if ($scope.sud) $scope.regions.push("Sud / suden");
-      if ($scope.centre) $scope.regions.push("Centre / zentrum");
+      console.log("ouest", $scope["ouest"]);
+      console.log("nord", $scope["nord"]);
+      console.log("est", $scope["est"]);
+      console.log("sud-est", $scope["sud-est"]);
+      console.log("sud", $scope["sud"]);
+      console.log("sud-ouest", $scope["sud-ouest"]);
+
+      // debugger;
+      if ($scope.national) {
+        // $scope.nord = true;
+        // $scope.est = true;
+        // $scope.sud = true;
+        // $scope.centre = true;
+        $scope["ouest"] = true;
+        $scope["nord"] = true;
+        $scope["est"] = true;
+        $scope["sud-est"] = true;
+        $scope["sud"] = true;
+        $scope["sud-ouest"] = true;
+      } else if (e && e.target.id == "national") {
+        // $scope.nord = false;
+        // $scope.est = false;
+        // $scope.sud = false;
+        // $scope.centre = false;
+        // $scope.centre = true;
+        $scope["ouest"] = false;
+        $scope["nord"] = false;
+        $scope["est"] = false;
+        $scope["sud-est"] = false;
+        $scope["sud"] = false;
+        $scope["sud-ouest"] = false;
+      }
+      // if ($scope.nord) $scope.regions.push("Nord / norden");
+      // if ($scope.est) $scope.regions.push("Est / osten");
+      // if ($scope.sud) $scope.regions.push("Sud / suden");
+      // if ($scope.centre) $scope.regions.push("Centre / zentrum");
+      if ($scope["ouest"]) $scope.regions.push("ouest");
+      if ($scope["nord"]) $scope.regions.push("nord");
+      if ($scope["est"]) $scope.regions.push("est");
+      if ($scope["sud-est"]) $scope.regions.push("sud-est");
+      if ($scope["sud"]) $scope.regions.push("sud");
+      if ($scope["sud-ouest"]) $scope.regions.push("sud-ouest");
 
       return;
     };
@@ -193,12 +220,25 @@ myApp.controller("accueilCtrl", [
     $scope.addRegion = function(name, apply) {
       if (apply == undefined) apply = false;
 
-      if (name == "Nord / norden") $scope.nord = true;
-      if (name == "Est / osten") $scope.est = true;
-      if (name == "Sud / suden") $scope.sud = true;
-      if (name == "Centre / zentrum") $scope.centre = true;
+      // if (name == "Nord / norden") $scope.nord = true;
+      // if (name == "Est / osten") $scope.est = true;
+      // if (name == "Sud / suden") $scope.sud = true;
+      // if (name == "Centre / zentrum") $scope.centre = true;
+      if (name === "ouest") $scope["ouest"] = true;
+      if (name === "nord") $scope["nord"] = true;
+      if (name === "est") $scope["est"] = true;
+      if (name === "sud-est") $scope["sud-est"] = true;
+      if (name === "sud") $scope["sud"] = true;
+      if (name === "sud-ouest") $scope["sud-ouest"] = true;
 
-      if ($scope.nord && $scope.est && $scope.centre && $scope.sud)
+      if (
+        $scope["ouest"] &&
+        $scope["nord"] &&
+        $scope["est"] &&
+        $scope["sud-est"] &&
+        $scope["sud"] &&
+        $scope["sud-ouest"]
+      )
         $scope.national = true;
       else $scope.national = false;
 

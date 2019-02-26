@@ -36,6 +36,10 @@ myApp.directive("d3Map", [
         scope.zonesData = new Array();
         scope.paths = new Array();
 
+        // var colorCentre = "#5d2491",
+        //   colorSud = "#c01a2c",
+        //   colorEst = "#3871c2",
+        //   colorNord = "#fbbd13";
         var colorCentre = "#5d2491",
           colorSud = "#c01a2c",
           colorEst = "#3871c2",
