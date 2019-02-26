@@ -435,7 +435,7 @@ myApp.directive("d3Map", [
                   .attr("x", maxX * 0.2)
                   .attr("y", maxY / 8)
                   .attr("width", maxX * 0.5)
-                  .attr("height", maxY * 0.2)
+                  .attr("height", maxY * 0.16)
                   .attr("stroke", "grey")
                   .attr("fill", "none")
                   .attr("rx", "8")
@@ -478,19 +478,19 @@ myApp.directive("d3Map", [
                   .attr("font-size", "20px")
                   .text(data["region"])
                   .attr("fill", "black");
-                var brut = g
+                // var brut = g
+                //   .append("text")
+                //   .attr("x", x + 15)
+                //   .attr("y", y + 105)
+                //   .attr("font-size", "30px")
+                //   .text(data["brut"])
+                //   .attr("fill", "black");
+                var net = g
                   .append("text")
                   .attr("x", x + 15)
                   .attr("y", y + 105)
                   .attr("font-size", "30px")
-                  .text(data["brut"])
-                  .attr("fill", "black");
-                var net = g
-                  .append("text")
-                  .attr("x", x + 15)
-                  .attr("y", y + 135)
-                  .attr("font-size", "30px")
-                  .text(data["net"])
+                  .text("Net : " + data["net"])
                   .attr("fill", "black");
 
                 // if (data["region"] == "Centre / zentrum")
