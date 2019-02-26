@@ -176,24 +176,24 @@ myApp.controller("accueilCtrl", [
         $scope["ouest"] = true;
         $scope["nord"] = true;
         $scope["est"] = true;
-        $scope["sud-est"] = true;
+        $scope["sudEst"] = true;
         $scope["sud"] = true;
-        $scope["sud-ouest"] = true;
+        $scope["sudOuest"] = true;
       } else if (e && e.target.id == "national") {
         $scope["ouest"] = false;
         $scope["nord"] = false;
         $scope["est"] = false;
-        $scope["sud-est"] = false;
+        $scope["sudEst"] = false;
         $scope["sud"] = false;
-        $scope["sud-ouest"] = false;
+        $scope["sudOuest"] = false;
       }
 
       if ($scope["ouest"]) $scope.regions.push("ouest");
       if ($scope["nord"]) $scope.regions.push("nord");
       if ($scope["est"]) $scope.regions.push("est");
-      if ($scope["sud-est"]) $scope.regions.push("sud-est");
+      if ($scope["sudEst"]) $scope.regions.push("sudEst");
       if ($scope["sud"]) $scope.regions.push("sud");
-      if ($scope["sud-ouest"]) $scope.regions.push("sud-ouest");
+      if ($scope["sudOuest"]) $scope.regions.push("sudOuest");
 
       console.log("REGIONS", $scope.regions);
 
@@ -211,17 +211,17 @@ myApp.controller("accueilCtrl", [
       if (name === "ouest") $scope["ouest"] = true;
       if (name === "nord") $scope["nord"] = true;
       if (name === "est") $scope["est"] = true;
-      if (name === "sud-est") $scope["sud-est"] = true;
+      if (name === "sudEst") $scope["sudEst"] = true;
       if (name === "sud") $scope["sud"] = true;
-      if (name === "sud-ouest") $scope["sud-ouest"] = true;
+      if (name === "sudOuest") $scope["sudOuest"] = true;
 
       if (
         $scope["ouest"] &&
         $scope["nord"] &&
         $scope["est"] &&
-        $scope["sud-est"] &&
+        $scope["sudEst"] &&
         $scope["sud"] &&
-        $scope["sud-ouest"]
+        $scope["sudOuest"]
       )
         $scope.national = true;
       else $scope.national = false;

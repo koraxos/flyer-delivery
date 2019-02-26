@@ -150,9 +150,9 @@ myApp.directive("d3Map", [
                   if (data["region"] === "ouest") p.attr("fill", colorOuest);
                   if (data["region"] === "nord") p.attr("fill", colorNord);
                   if (data["region"] === "est") p.attr("fill", colorEst);
-                  if (data["region"] === "sud-est") p.attr("fill", colorSudEst);
+                  if (data["region"] === "sudEst") p.attr("fill", colorSudEst);
                   if (data["region"] === "sud") p.attr("fill", colorSud);
-                  if (data["region"] === "sud-ouest")
+                  if (data["region"] === "sudOuest")
                     p.attr("fill", colorSudOuest);
                 } else {
                   p.attr("fill", "white").attr("class", "pathRegion");
@@ -227,10 +227,10 @@ myApp.directive("d3Map", [
                     if (data["region"] === "ouest") p.attr("fill", colorOuest);
                     if (data["region"] === "nord") p.attr("fill", colorNord);
                     if (data["region"] === "est") p.attr("fill", colorEst);
-                    if (data["region"] === "sud-est")
+                    if (data["region"] === "sudEst")
                       p.attr("fill", colorSudEst);
                     if (data["region"] === "sud") p.attr("fill", colorSud);
-                    if (data["region"] === "sud-ouest")
+                    if (data["region"] === "sudOuest")
                       p.attr("fill", colorSudOuest);
                   } else {
                     p.attr("fill", "white").attr("class", "pathRegion");
@@ -246,9 +246,9 @@ myApp.directive("d3Map", [
                 "ouest",
                 "nord",
                 "est",
-                "sud-est",
+                "sudEst",
                 "sud",
-                "sud-ouest"
+                "sudOuest"
               ];
 
               regions.forEach(function(reg) {
@@ -375,9 +375,9 @@ myApp.directive("d3Map", [
                   "ouest",
                   "nord",
                   "est",
-                  "sud-est",
+                  "sudEst",
                   "sud",
-                  "sud-ouest"
+                  "sudOuest"
                 ];
 
                 regions.forEach(function(reg) {
@@ -432,9 +432,9 @@ myApp.directive("d3Map", [
 
                 var rect = g
                   .append("rect")
-                  .attr("x", maxX * 0.8)
-                  .attr("y", maxY / 5)
-                  .attr("width", maxX * 0.4)
+                  .attr("x", maxX * 0.2)
+                  .attr("y", maxY / 8)
+                  .attr("width", maxX * 0.5)
                   .attr("height", maxY * 0.2)
                   .attr("stroke", "grey")
                   .attr("fill", "none")
@@ -458,6 +458,7 @@ myApp.directive("d3Map", [
                 // .attr("transform", function(d, i) { return "scale(" + (1 - d / 25) * 20 + ")"; });
 
                 var data = angular.copy(region);
+
                 // Gestion du texte dans le cadre
                 var x = parseInt(rect.attr("x")),
                   y = parseInt(rect.attr("y")),
@@ -504,10 +505,10 @@ myApp.directive("d3Map", [
                 if (data["region"] === "ouest") region.attr("fill", colorOuest);
                 if (data["region"] === "nord") region.attr("fill", colorNord);
                 if (data["region"] === "est") region.attr("fill", colorEst);
-                if (data["region"] === "sud-est")
+                if (data["region"] === "sudEst")
                   region.attr("fill", colorSudEst);
                 if (data["region"] === "sud") region.attr("fill", colorSud);
-                if (data["region"] === "sud-ouest")
+                if (data["region"] === "sudOuest")
                   region.attr("fill", colorSudOuest);
 
                 // Association des datas
@@ -534,7 +535,18 @@ myApp.directive("d3Map", [
                       // villeName[0].toUpperCase() + villeName.substr(1);
 
                       ville.text(villeName);
-                      brut.text("Brut : " + d["brut"]);
+
+                      // crappy exception
+                      let regionName = "";
+                      if (d["region"] === "sudEst") regionName = "Sud / Est";
+                      else if (d["region"] === "sudOuest")
+                        regionName = "Sud / Ouest";
+                      else
+                        regionName =
+                          d["region"].charAt(0).toUpperCase() +
+                          d["region"].slice(1);
+                      region.text(regionName);
+                      // brut.text("Brut : " + d["brut"]);
                       net.text("Net : " + d["net"]);
                       // if (d["region"] == "Centre / zentrum")
                       //   d3.select(this).attr("fill", colorCentre);
@@ -551,11 +563,11 @@ myApp.directive("d3Map", [
                         d3.select(this).attr("fill", colorNord);
                       if (d["region"] === "est")
                         d3.select(this).attr("fill", colorEst);
-                      if (d["region"] === "sud-est")
+                      if (d["region"] === "sudEst")
                         d3.select(this).attr("fill", colorSudEst);
                       if (d["region"] === "sud")
                         d3.select(this).attr("fill", colorSud);
-                      if (d["region"] === "sud-ouest")
+                      if (d["region"] === "sudOuest")
                         d3.select(this).attr("fill", colorSudOuest);
 
                       // Couleur du texte Région
@@ -574,11 +586,11 @@ myApp.directive("d3Map", [
                       if (d["region"] === "nord")
                         region.attr("fill", colorNord);
                       if (d["region"] === "est") region.attr("fill", colorEst);
-                      if (d["region"] === "sud-est")
+                      if (d["region"] === "sudEst")
                         region.attr("fill", colorSudEst);
                       if (d["region"] === "sud") region.attr("fill", colorSud);
-                      if (d["region"] === "sud-ouest")
-                        p.attr("fill", colorSudOuest);
+                      if (d["region"] === "sudOuest")
+                        region.attr("fill", colorSudOuest);
                     } else {
                       ville.text(id);
                       region.text("");
@@ -612,17 +624,17 @@ myApp.directive("d3Map", [
                       // else if (data["region"] == "Nord / norden")
                       //   d3.select(this).attr("fill", colorNord);
 
-                      if (d["region"] === "ouest")
+                      if (data["region"] === "ouest")
                         d3.select(this).attr("fill", colorOuest);
-                      if (d["region"] === "nord")
+                      if (data["region"] === "nord")
                         d3.select(this).attr("fill", colorNord);
-                      if (d["region"] === "est")
+                      if (data["region"] === "est")
                         d3.select(this).attr("fill", colorEst);
-                      if (d["region"] === "sud-est")
+                      if (data["region"] === "sudEst")
                         d3.select(this).attr("fill", colorSudEst);
-                      if (d["region"] === "sud")
+                      if (data["region"] === "sud")
                         d3.select(this).attr("fill", colorSud);
-                      if (d["region"] === "sud-ouest")
+                      if (data["region"] === "sudOuest")
                         d3.select(this).attr("fill", colorSudOuest);
                     }
                   });
