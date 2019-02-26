@@ -169,21 +169,10 @@ myApp.controller("accueilCtrl", [
 
     $scope.changeMap = function(e) {
       $scope.regions = new Array();
-      console.log("LOOG", $scope);
 
-      console.log("ouest", $scope["ouest"]);
-      console.log("nord", $scope["nord"]);
-      console.log("est", $scope["est"]);
-      console.log("sud-est", $scope["sud-est"]);
-      console.log("sud", $scope["sud"]);
-      console.log("sud-ouest", $scope["sud-ouest"]);
+      console.log("TARGGGET", e);
 
-      // debugger;
       if ($scope.national) {
-        // $scope.nord = true;
-        // $scope.est = true;
-        // $scope.sud = true;
-        // $scope.centre = true;
         $scope["ouest"] = true;
         $scope["nord"] = true;
         $scope["est"] = true;
@@ -191,11 +180,6 @@ myApp.controller("accueilCtrl", [
         $scope["sud"] = true;
         $scope["sud-ouest"] = true;
       } else if (e && e.target.id == "national") {
-        // $scope.nord = false;
-        // $scope.est = false;
-        // $scope.sud = false;
-        // $scope.centre = false;
-        // $scope.centre = true;
         $scope["ouest"] = false;
         $scope["nord"] = false;
         $scope["est"] = false;
@@ -203,16 +187,15 @@ myApp.controller("accueilCtrl", [
         $scope["sud"] = false;
         $scope["sud-ouest"] = false;
       }
-      // if ($scope.nord) $scope.regions.push("Nord / norden");
-      // if ($scope.est) $scope.regions.push("Est / osten");
-      // if ($scope.sud) $scope.regions.push("Sud / suden");
-      // if ($scope.centre) $scope.regions.push("Centre / zentrum");
+
       if ($scope["ouest"]) $scope.regions.push("ouest");
       if ($scope["nord"]) $scope.regions.push("nord");
       if ($scope["est"]) $scope.regions.push("est");
       if ($scope["sud-est"]) $scope.regions.push("sud-est");
       if ($scope["sud"]) $scope.regions.push("sud");
       if ($scope["sud-ouest"]) $scope.regions.push("sud-ouest");
+
+      console.log("REGIONS", $scope.regions);
 
       return;
     };
@@ -224,6 +207,7 @@ myApp.controller("accueilCtrl", [
       // if (name == "Est / osten") $scope.est = true;
       // if (name == "Sud / suden") $scope.sud = true;
       // if (name == "Centre / zentrum") $scope.centre = true;
+      console.log("NAMMME", name);
       if (name === "ouest") $scope["ouest"] = true;
       if (name === "nord") $scope["nord"] = true;
       if (name === "est") $scope["est"] = true;
