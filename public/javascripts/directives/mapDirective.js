@@ -45,12 +45,13 @@ myApp.directive("d3Map", [
         //   colorEst = "#3871c2",
         //   colorNord = "#fbbd13";
 
-        let colorOuest = "#F00000";
-        let colorNord = "#0F3D00";
-        let colorEst = "#00F024";
-        let colorSudEst = "#0D0F1F";
-        let colorSud = "#0000F0";
-        let colorSudOuest = "#0FD0FF";
+        let colorOuest = "#c39d38";
+        let colorNord = "#e8c577";
+        let colorEst = "#f9c867";
+        let colorSudEst = "#e0b870";
+        let colorSud = "#ffe448";
+        let colorSudOuest = "#d8ba21";
+        let colorNordEst = "#aa935e";
 
         width = d3.select(ele[0]).node().offsetWidth;
 
@@ -149,6 +150,8 @@ myApp.directive("d3Map", [
                   //   p.attr("fill", colorNord);
                   if (data["region"] === "ouest") p.attr("fill", colorOuest);
                   if (data["region"] === "nord") p.attr("fill", colorNord);
+                  if (data["region"] === "nordEst")
+                    p.attr("fill", colorNordEst);
                   if (data["region"] === "est") p.attr("fill", colorEst);
                   if (data["region"] === "sudEst") p.attr("fill", colorSudEst);
                   if (data["region"] === "sud") p.attr("fill", colorSud);
@@ -226,6 +229,8 @@ myApp.directive("d3Map", [
                     //   p.attr("fill", colorNord);
                     if (data["region"] === "ouest") p.attr("fill", colorOuest);
                     if (data["region"] === "nord") p.attr("fill", colorNord);
+                    if (data["region"] === "nordEst")
+                      p.attr("fill", colorNordEst);
                     if (data["region"] === "est") p.attr("fill", colorEst);
                     if (data["region"] === "sudEst")
                       p.attr("fill", colorSudEst);
@@ -410,7 +415,7 @@ myApp.directive("d3Map", [
                 g.attr(
                   "transform",
                   "translate(" +
-                    minX * -0.9 +
+                    minX * 0.1 +
                     ",-" +
                     minY * 0.1 +
                     ") scale(0.95,1)"
@@ -432,9 +437,9 @@ myApp.directive("d3Map", [
 
                 var rect = g
                   .append("rect")
-                  .attr("x", maxX * 0.2)
-                  .attr("y", maxY / 8)
-                  .attr("width", maxX * 0.5)
+                  .attr("x", maxX * 0.85)
+                  .attr("y", maxY / 9)
+                  .attr("width", maxX * 0.4)
                   .attr("height", maxY * 0.16)
                   .attr("stroke", "grey")
                   .attr("fill", "none")
@@ -504,6 +509,8 @@ myApp.directive("d3Map", [
 
                 if (data["region"] === "ouest") region.attr("fill", colorOuest);
                 if (data["region"] === "nord") region.attr("fill", colorNord);
+                if (data["region"] === "nordEst")
+                  region.attr("fill", colorNordEst);
                 if (data["region"] === "est") region.attr("fill", colorEst);
                 if (data["region"] === "sudEst")
                   region.attr("fill", colorSudEst);
@@ -541,6 +548,8 @@ myApp.directive("d3Map", [
                       if (d["region"] === "sudEst") regionName = "Sud / Est";
                       else if (d["region"] === "sudOuest")
                         regionName = "Sud / Ouest";
+                      else if (d["region"] === "nordEst")
+                        regionName = "Nord / Est";
                       else
                         regionName =
                           d["region"].charAt(0).toUpperCase() +
@@ -561,6 +570,8 @@ myApp.directive("d3Map", [
                         d3.select(this).attr("fill", colorOuest);
                       if (d["region"] === "nord")
                         d3.select(this).attr("fill", colorNord);
+                      if (d["region"] === "nordEst")
+                        d3.select(this).attr("fill", colorNordEst);
                       if (d["region"] === "est")
                         d3.select(this).attr("fill", colorEst);
                       if (d["region"] === "sudEst")
@@ -585,6 +596,8 @@ myApp.directive("d3Map", [
                         region.attr("fill", colorOuest);
                       if (d["region"] === "nord")
                         region.attr("fill", colorNord);
+                      if (d["region"] === "nordEst")
+                        region.attr("fill", colorNordEst);
                       if (d["region"] === "est") region.attr("fill", colorEst);
                       if (d["region"] === "sudEst")
                         region.attr("fill", colorSudEst);
@@ -628,6 +641,8 @@ myApp.directive("d3Map", [
                         d3.select(this).attr("fill", colorOuest);
                       if (data["region"] === "nord")
                         d3.select(this).attr("fill", colorNord);
+                      if (data["region"] === "nordEst")
+                        d3.select(this).attr("fill", colorNordEst);
                       if (data["region"] === "est")
                         d3.select(this).attr("fill", colorEst);
                       if (data["region"] === "sudEst")

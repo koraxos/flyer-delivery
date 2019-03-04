@@ -10,53 +10,31 @@ md-content.content(flex)
 								label.national(for="national") {{ langData[3] }}&nbsp;&nbsp;
 								input(type="checkbox", id="national", ng-model="national", ng-click="changeMap($event)")
 					form.form-inline.row
-						//- div.form-group.col-md-3
-						//- 	label.nord(for="nord") {{ langData[4] }}&nbsp;&nbsp;
-						//- 	input(type="checkbox", id="nord", ng-model="nord", ng-click="changeMap($event)")
-						//- div.form-group.col-md-3
-						//- 	label.est(for="est") {{ langData[5] }}&nbsp;&nbsp;
-						//- 	input(type="checkbox", id="est", ng-model="est", ng-click="changeMap($event)")
-						//- div.form-group.col-md-3
-						//- 	label.sud(for="sud") {{ langData[6] }}&nbsp;&nbsp;
-						//- 	input(type="checkbox", id="sud", ng-model="sud", ng-click="changeMap($event)")
-						//- div.form-group.col-md-3
-						//- 	label.centre(for="centre") {{ langData[7] }}&nbsp;&nbsp;
-						//- 	input(type="checkbox", id="centre", ng-model="centre", ng-click="changeMap($event)")
-						div.form-group.col-md-4
+						div.form-group.col-md-3
 							label.ouest(for="ouest") ouest&nbsp;&nbsp;
 							input(type="checkbox", id="ouest", ng-model="ouest", ng-click="changeMap($event)")
-						div.form-group.col-md-4
+						div.form-group.col-md-3
 							label.nord(for="nord") nord&nbsp;&nbsp;
 							input(type="checkbox", id="nord", ng-model="nord", ng-click="changeMap($event)")
-						div.form-group.col-md-4
+						div.form-group.col-md-3
+							label.nordEst(for="nord") nord / est&nbsp;&nbsp;
+							input(type="checkbox", id="nordEst", ng-model="nordEst", ng-click="changeMap($event)")
+						div.form-group.col-md-3
 							label.est(for="est") est&nbsp;&nbsp;
 							input(type="checkbox", id="est", ng-model="est", ng-click="changeMap($event)")
-						div.form-group.col-md-4
+						div.form-group.col-md-3
 							label.sudEst(for="sudEst") {{"sud / est"}}&nbsp;&nbsp;
 							input(type="checkbox", id="sudEst", ng-model="sudEst", ng-click="changeMap($event)")
-						div.form-group.col-md-4
+						div.form-group.col-md-3
 							label.sud(for="sud") sud&nbsp;&nbsp;
 							input(type="checkbox", id="sud", ng-model="sud", ng-click="changeMap($event)")
-						div.form-group.col-md-4
+						div.form-group.col-md-3
 							label.sudOuest(for="sudOuest") {{"sud / ouest"}}&nbsp;&nbsp;
-							input(type="checkbox", id="sudOuest", ng-model="sudOuest", ng-click="changeMap($event)")				
-				//- div(d3-map, ctrl-ajout="ajout", ctrl-remove="remove", 
-				//- 	ctrl-ajout-multi="ajoutMulti", ctrl-remove-multi="removeMulti", ctrl-region-actif="addRegion"
-				//- 	cities="/data/prices.csv", 
-				//- 	map="/data/CARTE RETAPE4LOIC.svg",height="800",
-				//- 	regions="regions",zones-data="zones")
-				
-				//- ouest
-				//- nord
-				//- est
-				//- sud / est
-				//- sud
-				//- sud / ouest
-				
+							input(type="checkbox", id="sudOuest", ng-model="sudOuest", ng-click="changeMap($event)")
 				div(d3-map, ctrl-ajout="ajout", ctrl-remove="remove", 
 					ctrl-ajout-multi="ajoutMulti", ctrl-remove-multi="removeMulti", ctrl-region-actif="addRegion"
 					cities="/data/prices.csv", 
-					map="/data/GOODNAMES.svg",height="800",
+					map="/data/map.svg",height="800",
 					regions="regions",zones-data="zones")
 				
 				//- div(d3-map, ctrl-ajout="ajout", ctrl-remove="remove", 
@@ -96,6 +74,7 @@ md-content.content(flex)
 					legend.scheduler-border 3. {{ langData[11] }}
 					br
 					br
+					div quantité minimum 1000
 					div.form-group.row
 						label.text-right.col-sm-3.control-label(for="intitule") {{ langData[12] }} *
 						div.col-sm-6
@@ -108,10 +87,7 @@ md-content.content(flex)
 								option(value="21g - 40g") 21g - 40g 
 								option(value="41g - 60g") 41g - 60g
 								option(value="61g - 100g") 61g - 100g
-								option(value="101g - 120g") 101g - 120g
-								option(value="121g - 150g") 121g - 150g 
-								option(value="151g - 200g") 151g - 200g
-								option(value="+ de 200g") + de 200g (Devis / Cotation)
+								option(value="+ de 100g") + de 100g (Devis / Cotation)
 					div.form-group.row
 						label.text-right.col-sm-3.control-label {{ langData[14] }} *
 						label.checkbox-inline.col-sm-1
@@ -131,18 +107,53 @@ md-content.content(flex)
 						label.text-right.col-sm-3.control-label(for="distribution") {{ langData[16] }} *
 						div.col-sm-6
 							input.form-control.week-picker(type="text", name="distribution", ng-model="commande.distribution", required)
-		div.row(ng-style="{'margin-top': '20px'}")
-			h2.text-center {{ langData[18] }} : {{ commande.totalHT >= 0 ? commande.totalHT+"&nbsp;€&nbsp;H.T" : "sur devis" }}
+		div.row(ng-style="{'margin-top': '20px'}" ng-show="sumNet > 1000")
+			h2.text-center {{ langData[18] }} : {{ totalHT >= 0 && commande.poid !== "+ de 100g" ? totalHT.toFixed(2)+"&nbsp;€&nbsp;H.T" : "sur devis" }}
 			span.text-center(ng-style="{'margin-top': '20px'}")
-				button.btn.btn-success.btn-lg.ng-hide(ng-show="zones.length > 0", type="submit") {{ langData[19] }}
+				button.btn.btn-success.btn-lg.ng-hide(ng-show="sumNet > 1000", type="submit") {{ langData[19] }}
 	br
 	br
 	br
 	br
 
-	p {{ langData[20] }}
-	p {{ langData[21] }}
-	p {{ langData[22] }}
-	p {{ langData[23] }}
+	//- p {{ langData[20] }}
+	//- p {{ langData[21] }}
+	//- p {{ langData[22] }}
+	//- p {{ langData[23] }}
+	//- 
+	//- p {{ langData[24] }}
+	strong 1 : CONTRAT
+	p - Les présentes conditions générales s’appliquent aux services proposés par Distrib’Eco.
+	p - La signature du devis ou acceptation par courrier électronique, non modifié par le client vaut contrat entre les parties.
 
-	p {{ langData[24] }}
+	strong 2 : LES GARANTIES
+	p - Le client assume l’entière responsabilité de la campagne publicitaire qu’il réalise, plus particulièrement qu’elle ne contrevienne à aucun droit de propriété intellectuelle, de respect de la vie privée ou droit d’image.
+	p - Le client s’engage à ce que la campagne publicitaire respecte l’intégralité des dispositions légales et réglementaires en vigueur applicable en matière de publicité et respecte les recommandations de l’ARPP et plus généralement qu’ils respectent la réglementation Française et Européenne en vigueur applicable.
+	p - Le client garantit à Distrib’Eco dans le cadre du présent contrat à faire son affaire personnelle de toute réclamation ou procédure qu’elles qu’en soient les formes et natures.
+	p - Le client s’engage à régler directement à l’auteur de la réclamation toutes les sommes que celui-ci exigerait à Distrib’Eco. Le client assume la responsabilité des données remise à Distrib’Eco.
+
+	strong 3 : RESILIATION / ANNULATION / MODIFICATION
+	p - Le contrat peut être résilié par chacune des parties de plein droit et sauf préjudice des Dommages et Intérêts.
+	p - La résiliation ou annulation sera adressée à Distrib’Eco par lettre recommandée avec accusé de réception (LRAR) parvenant moins de 7 jours avant la date de début de distribution.
+	p - Toute modification du contrat client doit être vue avec un interlocuteur Distrib’Eco 7 jours avant la date de début de distribution.
+
+	strong 4 : CONDITIONS FINANCIERES
+	p - Les prix appliqués sont ceux fixés au devis et s’entendent hors Taxes.
+	p - Les tarifs en vigueur sont disponibles auprès de votre interlocuteur Distrib’Eco.
+	p - Les prix indiqués sur les devis sont valables 1 mois.
+	p - Le règlement par le client se fera à la signature avec possibilité d’encaissement à 30 jours si règlement par chèque.
+	p - Distrib’Eco refuse toutes prestations en cas de non-règlement à la signature du contrat.
+	p - Le client est responsable du paiement intégral des commandes passées.
+
+	strong 5 : RESPONSABILITE
+	p - Distrib’Eco ne pourra être tenu responsable des préjudices indirects, tels que les préjudices commerciaux, perte de commandes, perte de bénéfice, absence ou faible réponse à une campagne publicitaire.
+	p - En cas d’intervention des autorités administratives et judiciaires, Distrib’Eco n’est tenu à aucun remboursement ni aucun dommage et intérêts.
+
+	strong 6 : DISTRIBUTION
+	p - Distrib’Eco mettra tous les moyens nécessaires à la distribution.
+	p - La distribution s’effectue sur les semaines et sur un découpage par secteurs prédéfinis à l’avance avec le client. Tout autre document ne sera pas pris en compte.
+	p - Toutes prestations sont réalisées par nos soins. Si Distrib’Eco doit recourir à un sous-traitant, elle conserve la direction et responsabilité des prestations.
+	p - Les boîtes aux lettres non accessibles, ainsi que les boîtes portant la mention STOP PUB ou tout autre refus de publicité ne seront pas distribuées.
+	p - Les imprimés doivent être conditionnés par paquets identiques, les livraisons en vrac ne sont pas acceptées.
+	p - Toutes livraisons des documents doivent parvenir au plus tard 5 jours avant la date de distribution.
+	p - Si le client souhaite que Distrib’Eco enlève les documents chez celui-ci, un forfait supplémentaire sera facturé sur le devis.

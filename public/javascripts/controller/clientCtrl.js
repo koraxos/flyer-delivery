@@ -35,6 +35,7 @@ myApp.controller("accueilCtrl", [
           $scope.calcSum();
           runDatepicker();
           $scope.$apply();
+          console.log("FORMAT", rep);
         }, 150);
       },
       function(err) {
@@ -157,6 +158,14 @@ myApp.controller("accueilCtrl", [
           return a + b;
         });
 
+      if ($scope.sumNet >= 15000) {
+        $scope.totalHT = Math.round($scope.sumNet * 0.06 * 0.8 * 100) / 100;
+      } else if ($scope.sumNet >= 10000) {
+        $scope.totalHT = Math.round($scope.sumNet * 0.06 * 0.9 * 100) / 100;
+      } else {
+        $scope.totalHT = Math.round($scope.sumNet * 0.06 * 100) / 100;
+      }
+
       $timeout(function() {
         $("#listVille").scrollTop($("#listVille > table").height());
         // $scope.apply();
@@ -175,6 +184,7 @@ myApp.controller("accueilCtrl", [
       if ($scope.national) {
         $scope["ouest"] = true;
         $scope["nord"] = true;
+        $scope["nordEst"] = true;
         $scope["est"] = true;
         $scope["sudEst"] = true;
         $scope["sud"] = true;
@@ -182,6 +192,7 @@ myApp.controller("accueilCtrl", [
       } else if (e && e.target.id == "national") {
         $scope["ouest"] = false;
         $scope["nord"] = false;
+        $scope["nordEst"] = false;
         $scope["est"] = false;
         $scope["sudEst"] = false;
         $scope["sud"] = false;
@@ -190,6 +201,7 @@ myApp.controller("accueilCtrl", [
 
       if ($scope["ouest"]) $scope.regions.push("ouest");
       if ($scope["nord"]) $scope.regions.push("nord");
+      if ($scope["nordEst"]) $scope.regions.push("nordEst");
       if ($scope["est"]) $scope.regions.push("est");
       if ($scope["sudEst"]) $scope.regions.push("sudEst");
       if ($scope["sud"]) $scope.regions.push("sud");
@@ -210,6 +222,7 @@ myApp.controller("accueilCtrl", [
       console.log("NAMMME", name);
       if (name === "ouest") $scope["ouest"] = true;
       if (name === "nord") $scope["nord"] = true;
+      if (name === "nordEst") $scope["nordEst"] = true;
       if (name === "est") $scope["est"] = true;
       if (name === "sudEst") $scope["sudEst"] = true;
       if (name === "sud") $scope["sud"] = true;
@@ -218,6 +231,7 @@ myApp.controller("accueilCtrl", [
       if (
         $scope["ouest"] &&
         $scope["nord"] &&
+        $scope["nordEst"] &&
         $scope["est"] &&
         $scope["sudEst"] &&
         $scope["sud"] &&
