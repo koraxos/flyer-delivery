@@ -17,7 +17,8 @@ myApp.directive("d3Map", [
         ctrlRemove: "=",
         ctrlAjoutMulti: "=",
         ctrlRemoveMulti: "=",
-        ctrlRegionActif: "="
+        ctrlRegionActif: "=",
+        distribution: "@"
       },
       link: function(scope, ele, attrs) {
         // Valeurs par défault
@@ -30,7 +31,8 @@ myApp.directive("d3Map", [
           height = height - margin.top - margin.bottom,
           map = scope.map === undefined ? "Luxembourg.svg" : scope.map,
           cities = scope.cities === undefined ? "Commune.tsv" : scope.cities,
-          regions = scope.regions === undefined ? new Array() : scope.regions;
+          regions = scope.regions === undefined ? new Array() : scope.regions,
+          distribution = scope.distribution ? scope.distribution : "";
 
         scope.data = null;
         scope.zonesData = new Array();

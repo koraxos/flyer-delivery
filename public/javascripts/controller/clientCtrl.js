@@ -35,7 +35,6 @@ myApp.controller("accueilCtrl", [
           $scope.calcSum();
           runDatepicker();
           $scope.$apply();
-          console.log("FORMAT", rep);
         }, 150);
       },
       function(err) {
@@ -43,6 +42,14 @@ myApp.controller("accueilCtrl", [
         toastr.error(err.statusText);
       }
     );
+
+    $scope.$watch("commande.distribution", function(newValue, oldValue) {
+      console.log("commande", newValue, oldValue);
+    });
+
+    $scope.$watch("distribution", function(newValue, oldValue) {
+      console.log("distribution", newValue, oldValue);
+    });
 
     $scope.calcTotal = function() {
       // console.log("calc Total");
@@ -174,6 +181,10 @@ myApp.controller("accueilCtrl", [
       $scope.calcTotal();
       $scope.changeMap();
       return;
+    };
+
+    $scope.selectWeek = function(e) {
+      debugger;
     };
 
     $scope.changeMap = function(e) {

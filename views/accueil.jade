@@ -67,7 +67,7 @@ md-content.content(flex)
 									strong {{ sumNet }}
 				a.btn.btn-info.btn-lg(href="/carte", role="button", target="_blank")
 					i.fa.fa-download(aria-hidden="true")
-	form(ng-submit="saveCommande('/commande')")
+	form(week-behavior, cities="/data/weekBehavior.csv", ng-submit="saveCommande('/commande')")
 		div.row
 			div.col-md-12
 				fieldset.scheduler-border.part-1

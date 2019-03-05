@@ -2,19 +2,19 @@ extends layout
 
 block content
 	.text-center.content.hidden-xs.loading-block(ng-show="loading")
-		img.img-responsive(src="/images/logo.png")
+		img.img-responsive(src="/images/logo.jpg")
 		div
 			i.fa.fa-spinner.fa-5x.fa-spin
 		h3 {{ langData[49] }}
 		//- p page {{ current }} vers la page {{ next }}
 	.show-xs.text-center.size-block
-		img.img-responsive(src="/images/logo.png")
+		img.img-responsive(src="/images/logo.jpg")
 		br
 		br
 		br
 		h3 L'application n'est pas disponnible sur ce format d'écran.
 	.loading-block.text-center.ng-hide(ng-show="msie")
-		img.img-responsive(src="/images/logo.png")
+		img.img-responsive(src="/images/logo.jpg")
 		br
 		br
 		br
