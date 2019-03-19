@@ -74,7 +74,9 @@ md-content.content(flex)
 					legend.scheduler-border 3. {{ langData[11] }}
 					br
 					br
-					div quantité minimum 1000
+					div(ng-style="{'font-size': '16px'}") quantité minimum 1000
+					div(ng-style="{'font-size': '16px'}") Tarif de 0.06€ (réduction de 10 % à partir de 10 000 + réduction de 20 % à partir de 15 000)
+					br
 					div.form-group.row
 						label.text-right.col-sm-3.control-label(for="intitule") {{ langData[12] }} *
 						div.col-sm-6
@@ -109,6 +111,8 @@ md-content.content(flex)
 							input.form-control.week-picker(type="text", name="distribution", ng-model="commande.distribution", required)
 		div.row(ng-style="{'margin-top': '20px'}" ng-show="sumNet > 1000")
 			h2.text-center {{ langData[18] }} : {{ totalHT >= 0 && commande.poid !== "+ de 100g" ? totalHT.toFixed(2)+"&nbsp;€&nbsp;H.T" : "sur devis" }}
+			span.text-center: a(href="http://distribeco.fr/calendrier/") semaine de distribution
+			span.text-center « TVA non applicable - article 293 B du CGI » 
 			span.text-center(ng-style="{'margin-top': '20px'}")
 				button.btn.btn-success.btn-lg.ng-hide(ng-show="sumNet > 1000", type="submit") {{ langData[19] }}
 	br
