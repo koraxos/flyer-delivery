@@ -3,17 +3,17 @@
 var express = require("express");
 var chalk = require("chalk");
 var config = require("./config/environment");
-var mongoose = require("mongoose");
-
-mongoose.Promise = require("bluebird");
-mongoose.connect(
-  config.mongo.uri,
-  config.mongo.options
-);
-
-if (config.seed) {
-  require("./config/seed");
-}
+// var mongoose = require("mongoose");
+//
+// mongoose.Promise = require("bluebird");
+// mongoose.connect(
+//   config.mongo.uri,
+//   config.mongo.options
+// );
+//
+// if (config.seed) {
+//   require("./config/seed");
+// }
 
 var app = express();
 var server = require("http").createServer(app);
