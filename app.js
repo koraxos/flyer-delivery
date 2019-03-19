@@ -25,7 +25,7 @@ require("./config/express.js")(app);
 app.use("/api", require("./routes/api.js"));
 app.use("/", require("./routes/index.js"));
 
-server.listen(config.port, config.ip, function() {
+server.listen(process.env.PORT || config.port, config.ip, function() {
   console.log(
     chalk.red("\nExpress server listening on port ") +
       chalk.yellow("%d") +
