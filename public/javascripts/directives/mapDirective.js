@@ -47,13 +47,13 @@ myApp.directive("d3Map", [
         //   colorEst = "#3871c2",
         //   colorNord = "#fbbd13";
 
-        let colorOuest = "#c39d38";
-        let colorNord = "#e8c577";
-        let colorEst = "#f9c867";
-        let colorSudEst = "#e0b870";
-        let colorSud = "#ffe448";
-        let colorSudOuest = "#d8ba21";
-        let colorNordEst = "#aa935e";
+        var colorOuest = "#c39d38";
+        var colorNord = "#e8c577";
+        var colorEst = "#f9c867";
+        var colorSudEst = "#e0b870";
+        var colorSud = "#ffe448";
+        var colorSudOuest = "#d8ba21";
+        var colorNordEst = "#aa935e";
 
         width = d3.select(ele[0]).node().offsetWidth;
 
@@ -546,7 +546,7 @@ myApp.directive("d3Map", [
                       ville.text(villeName);
 
                       // crappy exception
-                      let regionName = "";
+                      var regionName = "";
                       if (d["region"] === "sudEst") regionName = "Sud / Est";
                       else if (d["region"] === "sudOuest")
                         regionName = "Sud / Ouest";
