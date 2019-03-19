@@ -13,8 +13,8 @@ var helmet = require('helmet'),
     toastr = require('express-toastr'),
     favicon = require('serve-favicon'),
     passport = require('passport'),
-    mongoStore = require('connect-mongo')(session),
-    mongoose = require('mongoose');
+    // mongoStore = require('connect-mongo')(session),
+    // mongoose = require('mongoose');
 
 var config = require('./environment');
 var hour = 3600000;
@@ -81,7 +81,7 @@ module.exports = function (app) {
     cookie: {
       expires:new Date(Date.now() + hour),
       maxAge:hour },
-    store: new mongoStore({ mongooseConnection: mongoose.connection })
+    // store: new mongoStore({ mongooseConnection: mongoose.connection })
   }));
 
   //toaster

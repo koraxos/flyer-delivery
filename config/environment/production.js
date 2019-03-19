@@ -20,6 +20,6 @@ module.exports = {
     baseUrl: "https://api.mangopay.com",
     fees: 1.5
   },
-  port: 8084,
-  seed: true
+  port: 5000,
+  seed: false
 };
