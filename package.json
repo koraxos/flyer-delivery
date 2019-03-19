@@ -10,7 +10,7 @@
     "start": "node app.js",
     "restart": "killall node;rm app.log;nohup node app.js > app.log &",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "gulp build",
+    "build": "gulp build",
     "dev": "gulp default"
   },
   "dependencies": {
