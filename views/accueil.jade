@@ -2,35 +2,35 @@ md-content.content(flex)
 	div.row
 		div.col-md-8
 			fieldset.scheduler-border
-				legend.scheduler-border 1. {{ langData[1] }}
+				legend.scheduler-border 1. Zones / Villes de distribution
 				fieldset.scheduler-border-2
 					legend.scheduler-border-2
 						form.form-inline.row
 							div.form-group
-								label.national(for="national") {{ langData[3] }}&nbsp;&nbsp;
+								label.national(for="national") Tous secteurs&nbsp;&nbsp;
 								input(type="checkbox", id="national", ng-model="national", ng-click="changeMap($event)")
 					form.form-inline.row
 						div.form-group.col-md-3
-							label.ouest(for="ouest") ouest&nbsp;&nbsp;
-							input(type="checkbox", id="ouest", ng-model="ouest", ng-click="changeMap($event)")
-						div.form-group.col-md-3
-							label.nord(for="nord") nord&nbsp;&nbsp;
+							label.nord(for="nord") Metz nord&nbsp;&nbsp;
 							input(type="checkbox", id="nord", ng-model="nord", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.nordEst(for="nord") nord / est&nbsp;&nbsp;
+							label.nordEst(for="nord") Metz Nord-Est&nbsp;&nbsp;
 							input(type="checkbox", id="nordEst", ng-model="nordEst", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.est(for="est") est&nbsp;&nbsp;
+							label.est(for="est") Metz Est&nbsp;&nbsp;
 							input(type="checkbox", id="est", ng-model="est", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.sudEst(for="sudEst") {{"sud / est"}}&nbsp;&nbsp;
+							label.sudEst(for="sudEst") Metz Sud-Est&nbsp;&nbsp;
 							input(type="checkbox", id="sudEst", ng-model="sudEst", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.sud(for="sud") sud&nbsp;&nbsp;
+							label.sud(for="sud") Metz Sud&nbsp;&nbsp;
 							input(type="checkbox", id="sud", ng-model="sud", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.sudOuest(for="sudOuest") {{"sud / ouest"}}&nbsp;&nbsp;
+							label.sudOuest(for="sudOuest") Metz Sud-Ouest&nbsp;&nbsp;
 							input(type="checkbox", id="sudOuest", ng-model="sudOuest", ng-click="changeMap($event)")
+						div.form-group.col-md-3
+							label.ouest(for="ouest") Metz Ouest&nbsp;&nbsp;
+							input(type="checkbox", id="ouest", ng-model="ouest", ng-click="changeMap($event)")
 				div(d3-map, ctrl-ajout="ajout", ctrl-remove="remove", 
 					ctrl-ajout-multi="ajoutMulti", ctrl-remove-multi="removeMulti", ctrl-region-actif="addRegion"
 					cities="/data/prices.csv", 
@@ -46,12 +46,12 @@ md-content.content(flex)
 				//- img(src="/data/test_map.svg")
 		div.col-md-4
 			fieldset.scheduler-border-3.part-list
-				legend.scheduler-border 2. {{ langData[8] }} ({{ zones.length }})
+				legend.scheduler-border 2. Votre sélection ({{ zones.length }})
 				#listVille
 					table.table.table-striped
 						thead
 							tr
-								th {{ langData[9] }}
+								th communes
 								th Nb Net
 						tbody
 							tr(ng-repeat="zone in zones")
@@ -62,7 +62,7 @@ md-content.content(flex)
 						tfoot
 							tr
 								td 
-									strong {{ langData[10] }}
+									strong total
 								td 
 									strong {{ sumNet }}
 				a.btn.btn-info.btn-lg(href="/carte", role="button", target="_blank")
@@ -71,18 +71,21 @@ md-content.content(flex)
 		div.row
 			div.col-md-12
 				fieldset.scheduler-border.part-1
-					legend.scheduler-border 3. {{ langData[11] }}
+					legend.scheduler-border 3. Détails de la commande
 					br
 					br
-					div(ng-style="{'font-size': '16px'}") quantité minimum 1000
-					div(ng-style="{'font-size': '16px'}") Tarif de 0.06€ (réduction de 10 % à partir de 10 000 + réduction de 20 % à partir de 15 000)
+					div(ng-style="{'font-size': '25px'}") quantité minimum 1000
+					div(ng-style="{'font-size': '20px'}") 
+						div Tarif de #[strong 0.06 € l’unité]
+						div -Réduction de #[strong 10% à partir de 10 000]
+						div -Réduction de #[strong 20% à partir de 15 000]  
 					br
 					div.form-group.row
-						label.text-right.col-sm-3.control-label(for="intitule") {{ langData[12] }} *
+						label.text-right.col-sm-3.control-label(for="intitule") Intitulé *
 						div.col-sm-6
 							input.form-control(required, type="text", id="intitule", name="intitule", ng-model="commande.intitule")
 					div.form-group.row
-						label.text-right.col-sm-3.control-label(for="poid") {{ langData[13] }} *
+						label.text-right.col-sm-3.control-label(for="poid") Poids unitaire en g *
 						div.col-sm-6
 							select.form-control(required, ng-model="commande.poid", ng-change="calcTotal()")
 								option(value="1g - 20g", selected) 1g - 20g 
@@ -91,7 +94,7 @@ md-content.content(flex)
 								option(value="61g - 100g") 61g - 100g
 								option(value="+ de 100g") + de 100g (Devis / Cotation)
 					div.form-group.row
-						label.text-right.col-sm-3.control-label {{ langData[14] }} *
+						label.text-right.col-sm-3.control-label Format *
 						label.checkbox-inline.col-sm-1
 							input(type="radio", name="format", ng-model="formatA6", ng-checked="commande.format=='A6'", ng-click="commande.format='A6'", id="A6", value="A6", checked)
 							span &nbsp;&nbsp;A6
@@ -102,19 +105,19 @@ md-content.content(flex)
 							input(type="radio", name="format", ng-model="formatA4",ng-checked="commande.format=='A4'",  ng-click="commande.format='A4'", id="A4", value="A4")
 							span &nbsp;&nbsp;A4
 					div.form-group.row
-						label.text-right.col-sm-3.control-label {{ langData[15] }}
+						label.text-right.col-sm-3.control-label Autre
 						div.col-sm-6
 							input.form-control(type="text", name="format", ng-click="commande.format='Autre'", ng-model="formatAutre", ng-change="commande.format=formatAutre", id="Autre", value="A3")
 					div.form-group.row
-						label.text-right.col-sm-3.control-label(for="distribution") {{ langData[16] }} *
+						label.text-right.col-sm-3.control-label(for="distribution") Semaine de distribution *
 						div.col-sm-6
 							input.form-control.week-picker(type="text", name="distribution", ng-model="commande.distribution", required)
 		div.row(ng-style="{'margin-top': '20px'}" ng-show="sumNet > 1000")
-			h2.text-center {{ langData[18] }} : {{ totalHT >= 0 && commande.poid !== "+ de 100g" ? totalHT.toFixed(2)+"&nbsp;€&nbsp;H.T" : "sur devis" }}
-			span.text-center: a(href="http://distribeco.fr/calendrier/") semaine de distribution
-			span.text-center « TVA non applicable - article 293 B du CGI » 
+			h2.text-center Cout total : {{ totalHT >= 0 && commande.poid !== "+ de 100g" ? totalHT.toFixed(2)+"&nbsp;€&nbsp;H.T" : "sur devis" }}
+			span.text-center(ng-style="{'font-size': '20px'}"): a(href="http://distribeco.fr/calendrier/") Voir le calendrier des semaine de distribution.
+			span.text-center(ng-style="{'font-size': '20px'}") « TVA non applicable - article 293 B du CGI » 
 			span.text-center(ng-style="{'margin-top': '20px'}")
-				button.btn.btn-success.btn-lg.ng-hide(ng-show="sumNet > 1000", type="submit") {{ langData[19] }}
+				button.btn.btn-success.btn-lg.ng-hide(ng-show="sumNet > 1000", type="submit") Valider la commande
 	br
 	br
 	br

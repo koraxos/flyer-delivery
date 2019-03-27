@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
-var config = require("../config/environment"),
-  auth = require("./lib/auth.js"),
-  pdf = require("./lib/createPdf.js");
+var config = require("../config/environment");
+// auth = require("./lib/auth.js"),
+// pdf = require("./lib/createPdf.js");
 /* GET home page. */
 
 var Promise = require("bluebird");
@@ -84,38 +84,38 @@ router.get("/validation", function(req, res) {
   if (!req.xhr || req.headers.accept.indexOf("json") < -1) res.redirect("/");
   res.render("validation", { req: req, title: "Distral S.A - Terminer" });
 });
+//
+// router.get("/cgvpaiement", function(req, res) {
+//   var filename = "CGU_MANGOPAY_France.pdf";
+//   filename = encodeURIComponent(filename);
+//
+//   fs.readFile(config.root + "/CGU_MANGOPAY_France.pdf", function(err, data) {
+//     res.setHeader("Content-disposition", 'inline; filename="' + filename + '"');
+//     res.setHeader("Content-type", "application/pdf");
+//     res.send(data);
+//   });
+// });
 
-router.get("/cgvpaiement", function(req, res) {
-  var filename = "CGU_MANGOPAY_France.pdf";
-  filename = encodeURIComponent(filename);
-
-  fs.readFile(config.root + "/CGU_MANGOPAY_France.pdf", function(err, data) {
-    res.setHeader("Content-disposition", 'inline; filename="' + filename + '"');
-    res.setHeader("Content-type", "application/pdf");
-    res.send(data);
-  });
-});
-
-router.get("/carte", function(req, res) {
-  var commande = req.session.commande;
-  Commande.findOne({ _id: commande._id }, function(err, cmd) {
-    if (err) res.status(500).send(err);
-
-    cmd.getZones().then(
-      function(cmd) {
-        // Creer un .PDF
-
-        res.setHeader("Content-type", "application/pdf");
-        var newPdf = pdf.create(cmd.zones);
-        newPdf.pipe(res);
-        newPdf.end();
-      },
-      function(err) {
-        res.status(504).send(err);
-      }
-    );
-  });
-});
+// router.get("/carte", function(req, res) {
+//   var commande = req.session.commande;
+//   Commande.findOne({ _id: commande._id }, function(err, cmd) {
+//     if (err) res.status(500).send(err);
+//
+//     cmd.getZones().then(
+//       function(cmd) {
+//         // Creer un .PDF
+//
+//         res.setHeader("Content-type", "application/pdf");
+//         var newPdf = pdf.create(cmd.zones);
+//         newPdf.pipe(res);
+//         newPdf.end();
+//       },
+//       function(err) {
+//         res.status(504).send(err);
+//       }
+//     );
+//   });
+// });
 
 router.use("/reglement", require("./reglement"));
 router.use("/admin", require("./admin"));
