@@ -53,33 +53,10 @@ html
 
         div !{req.toastr.render()}
 
-    body(ng-app="distralsa")
-        md-menu.hidden-xs(layout="row", layout-align="right right")
-            md-button.md-raised(aria-label="Choose your language", ng-click="openMenu($mdMenu, $event)")
-                md-icon(ng-style="{'margin-right': '10px', 'font-size':'36px', 'width':'36px'}", md-menu-origin, md-svg-src="svg/fr.svg")
-                span &nbsp;
-                md-icon(ng-style="{'margin-right': '10px', 'font-size':'44px', 'width':'44px'}", md-menu-origin, md-svg-src="svg/gb.svg")
-                span &nbsp;
-                md-icon(ng-style="{'margin-right': '10px', 'font-size':'36px', 'width':'36px'}", md-menu-origin, md-svg-src="svg/de.svg")
-            md-menu-content
-                md-menu-item(class="langBtn")
-                    md-button(ng-click="changeLang($event, 'fr')")
-                        md-icon(md-menu-origin, md-svg-src="svg/fr.svg")
-                        span Français
-                md-menu-item(class="langBtn")
-                    md-button(ng-click="changeLang($event, 'en')")
-                        md-icon(md-menu-origin, md-svg-src="svg/gb.svg")
-                        span English
-                md-menu-item(class="langBtn")
-                    md-button(ng-click="changeLang($event, 'de')")
-                        md-icon(md-menu-origin, md-svg-src="svg/de.svg")
-                        span Deutch
-        //- div.aide
-        //-     a(href="tel:+3522652551")
-        //-         img(src="images/{{ langData[55] }}.svg")
-        .row
+    body(ng-app="distribeco")
+      .row
             h1.titre
-                img.image-responsive(src="/images/logo.png", width="100PX")
+                img.image-responsive(src="/images/logo.png", width="350px")
                 | {{ langData[54] }}
                 
         block content

@@ -11,25 +11,25 @@ md-content.content(flex)
 								input(type="checkbox", id="national", ng-model="national", ng-click="changeMap($event)")
 					form.form-inline.row
 						div.form-group.col-md-3
-							label.nord(for="nord") Metz nord&nbsp;&nbsp;
+							label.nord(for="nord" ng-style="{'font-size': '20px'}") Metz nord&nbsp;&nbsp;
 							input(type="checkbox", id="nord", ng-model="nord", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.nordEst(for="nord") Metz Nord-Est&nbsp;&nbsp;
+							label.nordEst(for="nord" ng-style="{'font-size': '20px'}") Metz Nord-Est&nbsp;&nbsp;
 							input(type="checkbox", id="nordEst", ng-model="nordEst", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.est(for="est") Metz Est&nbsp;&nbsp;
+							label.est(for="est" ng-style="{'font-size': '20px'}") Metz Est&nbsp;&nbsp;
 							input(type="checkbox", id="est", ng-model="est", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.sudEst(for="sudEst") Metz Sud-Est&nbsp;&nbsp;
+							label.sudEst(for="sudEst" ng-style="{'font-size': '20px'}") Metz Sud-Est&nbsp;&nbsp;
 							input(type="checkbox", id="sudEst", ng-model="sudEst", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.sud(for="sud") Metz Sud&nbsp;&nbsp;
+							label.sud(for="sud" ng-style="{'font-size': '20px'}") Metz Sud&nbsp;&nbsp;
 							input(type="checkbox", id="sud", ng-model="sud", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.sudOuest(for="sudOuest") Metz Sud-Ouest&nbsp;&nbsp;
+							label.sudOuest(for="sudOuest" ng-style="{'font-size': '20px'}") Metz Sud-Ouest&nbsp;&nbsp;
 							input(type="checkbox", id="sudOuest", ng-model="sudOuest", ng-click="changeMap($event)")
 						div.form-group.col-md-3
-							label.ouest(for="ouest") Metz Ouest&nbsp;&nbsp;
+							label.ouest(for="ouest" ng-style="{'font-size': '20px'}") Metz Ouest&nbsp;&nbsp;
 							input(type="checkbox", id="ouest", ng-model="ouest", ng-click="changeMap($event)")
 				div(d3-map, ctrl-ajout="ajout", ctrl-remove="remove", 
 					ctrl-ajout-multi="ajoutMulti", ctrl-remove-multi="removeMulti", ctrl-region-actif="addRegion"
