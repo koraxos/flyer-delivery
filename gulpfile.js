@@ -15,6 +15,7 @@ var rename = require("gulp-rename");
 var nodemon = require("gulp-nodemon");
 var open = require("gulp-open");
 var livereload = require("gulp-livereload");
+var sourcemaps = require("gulp-sourcemaps");
 var browserSync = require("browser-sync").create();
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
@@ -68,15 +69,17 @@ gulp.task('less', function() {
 gulp.task("js", function() {
   return gulp
     .src("public/javascripts/**/*.js")
+    .pipe(sourcemaps.init())
     .pipe(replace(/"use strict"'/g, ";"))
     .pipe(concat("all.js"))
-    .pipe(gulp.dest("public/dist"))
-    .pipe(
-      uglifyjs("all.min.js", {
-        mangle: false
-      })
-    )
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest("public/dist"));
+  // .pipe(
+  //   uglifyjs("all.min.js", {
+  //     mangle: false
+  //   })
+  // )
+  // .pipe(gulp.dest("public/dist"));
 });
 
 // Concatenate & Minify CSS

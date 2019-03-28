@@ -65,7 +65,7 @@ md-content.content(flex)
 									strong total
 								td 
 									strong {{ sumNet }}
-	form(week-behavior, cities="/data/weekBehavior.csv", ng-submit="saveCommande('/commande')")
+	form(ng-submit="saveCommande('/commande')")
 		div.row
 			div.col-md-12
 				fieldset.scheduler-border.part-1
@@ -104,19 +104,19 @@ md-content.content(flex)
 								input(type="radio", name="format", ng-model="formatA4",ng-checked="commande.format=='A4'",  ng-click="commande.format='A4'", id="A4", value="A4")
 								span &nbsp;&nbsp;A4
 						div.form-group.row
-							label.text-right.col-sm-3.control-label Autre
+							label.text-right.col-sm-3.control-label Autre format
 							div.col-sm-6
 								input.form-control(type="text", name="format", ng-click="commande.format='Autre'", ng-model="formatAutre", ng-change="commande.format=formatAutre", id="Autre", value="A3")
 						div.form-group.row
 							label.text-right.col-sm-3.control-label(for="distribution") Semaine de distribution *
 							div.col-sm-6
-								input.form-control.week-picker(type="text", name="distribution", ng-model="commande.distribution", required)
+								input.form-control(type="text", name="distribution", ng-model="commande.distribution", required)
+								div.text-center(ng-style="{'font-size': '20px', 'margin-top': '5px'}"): a(href="http://distribeco.fr/calendrier/" target="_blank") Voir le calendrier des semaines de distribution
 		div.row(ng-style="{'margin-top': '20px'}" ng-show="sumNet > 1000")
 			h2.text-center Cout total : {{ totalHT >= 0 && commande.poid !== "+ de 100g" ? totalHT.toFixed(2)+"&nbsp;€&nbsp;H.T" : "sur devis" }}
-			span.text-center(ng-style="{'font-size': '20px'}"): a(href="http://distribeco.fr/calendrier/" target="_blank") Voir le calendrier des semaines de distribution.
 			span.text-center(ng-style="{'font-size': '20px'}") « TVA non applicable - article 293 B du CGI » 
 			span.text-center(ng-style="{'margin-top': '20px'}")
-				button.btn.btn-success.btn-lg.ng-hide(ng-show="sumNet > 1000", type="submit") Valider la commande
+				input.btn.btn-success.btn-lg.ng-hide(ng-show="sumNet > 1000", type="submit" value="Valider la commande")
 	br
 	br
 	br

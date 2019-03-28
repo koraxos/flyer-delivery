@@ -67,18 +67,20 @@ myApp.controller("accueilCtrl", [
     };
 
     $scope.saveCommande = function(path) {
-      // console.log("save cmd");
+      console.log("save cmd");
+      // debugger;
       // console.log($scope.commande.zones.length);
-      $commandeService.modif($scope.commande._id, $scope.commande).then(
-        function(cmd) {
-          angular.copy(cmd, $scope.commande);
-          $rootScope.go(path);
-        },
-        function(err) {
-          console.warn(err);
-          toastr.error(err.statusText);
-        }
-      );
+      // $commandeService.modif($scope.commande._id, $scope.commande).then(
+      //   function(cmd) {
+      // angular.copy(cmd, $scope.commande);
+      $rootScope.commande = $scope.commande;
+      $rootScope.go(path);
+      // },
+      // function(err) {
+      //   console.warn(err);
+      //   toastr.error(err.statusText);
+      // }
+      // );
     };
 
     $scope.ajout = function(data) {
@@ -280,13 +282,16 @@ myApp.controller("commandeCtrl", [
     );
 
     $scope.saveClient = function(path) {
-      if (!path || path === undefined) path = $scope.path;
-      $clientService
-        .modif($scope.client._id, $scope.client)
-        .then(function(client) {
-          angular.copy(client, $scope.client);
-          $rootScope.go(path);
-        });
+      console.log("commande", $rootScope.commande);
+      console.log("scope", $scope);
+
+      // if (!path || path === undefined) path = $scope.path;
+      // $clientService
+      //   .modif($scope.client._id, $scope.client)
+      //   .then(function(client) {
+      //     angular.copy(client, $scope.client);
+      //     $rootScope.go(path);
+      //   });
     };
   }
 ]);
