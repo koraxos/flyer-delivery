@@ -4,7 +4,7 @@ module.exports = {
   ip: process.env.IP || undefined,
   mongo: {
     uri:
-      "mongodb://heroku_7n5dd6qj:gqjdi671c8d92cf4jid69jmbal@ds127376.mlab.com:27376/heroku_jvx8vrm9"
+      "mongodb://heroku_jvx8vrm9:v681m0ub3eom64vk9mjdhls9ft@ds127376.mlab.com:27376/heroku_jvx8vrm9"
   },
   website: "https://app.distral.lu",
   email: "frere.thibaud@gmail.com",
