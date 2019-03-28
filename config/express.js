@@ -54,7 +54,7 @@ module.exports = function(app) {
   app.use(morgan("dev"));
   app.use(passport.initialize());
   app.use(express.static(path.join(config.root, "public")));
-  app.use(favicon(path.join(config.root, "public", "images", "favicone.png")));
+  app.use(favicon(path.join(config.root, "public", "images", "fav.png")));
 
   // app.use('/admin', express.static(path.join(config.root, 'admin')));
   // app.set('adminPath', 'admin');
