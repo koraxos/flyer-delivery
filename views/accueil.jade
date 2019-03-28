@@ -65,8 +65,6 @@ md-content.content(flex)
 									strong total
 								td 
 									strong {{ sumNet }}
-				a.btn.btn-info.btn-lg(href="/carte", role="button", target="_blank")
-					i.fa.fa-download(aria-hidden="true")
 	form(week-behavior, cities="/data/weekBehavior.csv", ng-submit="saveCommande('/commande')")
 		div.row
 			div.col-md-12
@@ -80,41 +78,42 @@ md-content.content(flex)
 						div -Réduction de #[strong 10% à partir de 10 000]
 						div -Réduction de #[strong 20% à partir de 15 000]  
 					br
-					div.form-group.row
-						label.text-right.col-sm-3.control-label(for="intitule") Intitulé *
-						div.col-sm-6
-							input.form-control(required, type="text", id="intitule", name="intitule", ng-model="commande.intitule")
-					div.form-group.row
-						label.text-right.col-sm-3.control-label(for="poid") Poids unitaire en g *
-						div.col-sm-6
-							select.form-control(required, ng-model="commande.poid", ng-change="calcTotal()")
-								option(value="1g - 20g", selected) 1g - 20g 
-								option(value="21g - 40g") 21g - 40g 
-								option(value="41g - 60g") 41g - 60g
-								option(value="61g - 100g") 61g - 100g
-								option(value="+ de 100g") + de 100g (Devis / Cotation)
-					div.form-group.row
-						label.text-right.col-sm-3.control-label Format *
-						label.checkbox-inline.col-sm-1
-							input(type="radio", name="format", ng-model="formatA6", ng-checked="commande.format=='A6'", ng-click="commande.format='A6'", id="A6", value="A6", checked)
-							span &nbsp;&nbsp;A6
-						label.checkbox-inline.col-sm-1
-							input(type="radio", name="format", ng-model="formatA5",ng-checked="commande.format=='A5'",  ng-click="commande.format='A5'", id="A5", value="A5")
-							span &nbsp;&nbsp;A5
-						label.checkbox-inline.col-sm-1
-							input(type="radio", name="format", ng-model="formatA4",ng-checked="commande.format=='A4'",  ng-click="commande.format='A4'", id="A4", value="A4")
-							span &nbsp;&nbsp;A4
-					div.form-group.row
-						label.text-right.col-sm-3.control-label Autre
-						div.col-sm-6
-							input.form-control(type="text", name="format", ng-click="commande.format='Autre'", ng-model="formatAutre", ng-change="commande.format=formatAutre", id="Autre", value="A3")
-					div.form-group.row
-						label.text-right.col-sm-3.control-label(for="distribution") Semaine de distribution *
-						div.col-sm-6
-							input.form-control.week-picker(type="text", name="distribution", ng-model="commande.distribution", required)
+					div(ng-show="sumNet > 1000")
+						div.form-group.row
+							label.text-right.col-sm-3.control-label(for="intitule") Intitulé *
+							div.col-sm-6
+								input.form-control(required, type="text", id="intitule", name="intitule", ng-model="commande.intitule")
+						div.form-group.row
+							label.text-right.col-sm-3.control-label(for="poid") Poids unitaire en g *
+							div.col-sm-6
+								select.form-control(required, ng-model="commande.poid", ng-change="calcTotal()")
+									option(value="1g - 20g", selected) 1g - 20g 
+									option(value="21g - 40g") 21g - 40g 
+									option(value="41g - 60g") 41g - 60g
+									option(value="61g - 100g") 61g - 100g
+									option(value="+ de 100g") + de 100g (sur devis)
+						div.form-group.row
+							label.text-right.col-sm-3.control-label Format *
+							label.checkbox-inline.col-sm-1
+								input(type="radio", name="format", ng-model="formatA6", ng-checked="commande.format=='A6'", ng-click="commande.format='A6'", id="A6", value="A6", checked)
+								span &nbsp;&nbsp;A6
+							label.checkbox-inline.col-sm-1
+								input(type="radio", name="format", ng-model="formatA5",ng-checked="commande.format=='A5'",  ng-click="commande.format='A5'", id="A5", value="A5")
+								span &nbsp;&nbsp;A5
+							label.checkbox-inline.col-sm-1
+								input(type="radio", name="format", ng-model="formatA4",ng-checked="commande.format=='A4'",  ng-click="commande.format='A4'", id="A4", value="A4")
+								span &nbsp;&nbsp;A4
+						div.form-group.row
+							label.text-right.col-sm-3.control-label Autre
+							div.col-sm-6
+								input.form-control(type="text", name="format", ng-click="commande.format='Autre'", ng-model="formatAutre", ng-change="commande.format=formatAutre", id="Autre", value="A3")
+						div.form-group.row
+							label.text-right.col-sm-3.control-label(for="distribution") Semaine de distribution *
+							div.col-sm-6
+								input.form-control.week-picker(type="text", name="distribution", ng-model="commande.distribution", required)
 		div.row(ng-style="{'margin-top': '20px'}" ng-show="sumNet > 1000")
 			h2.text-center Cout total : {{ totalHT >= 0 && commande.poid !== "+ de 100g" ? totalHT.toFixed(2)+"&nbsp;€&nbsp;H.T" : "sur devis" }}
-			span.text-center(ng-style="{'font-size': '20px'}"): a(href="http://distribeco.fr/calendrier/") Voir le calendrier des semaine de distribution.
+			span.text-center(ng-style="{'font-size': '20px'}"): a(href="http://distribeco.fr/calendrier/" target="_blank") Voir le calendrier des semaines de distribution.
 			span.text-center(ng-style="{'font-size': '20px'}") « TVA non applicable - article 293 B du CGI » 
 			span.text-center(ng-style="{'margin-top': '20px'}")
 				button.btn.btn-success.btn-lg.ng-hide(ng-show="sumNet > 1000", type="submit") Valider la commande
