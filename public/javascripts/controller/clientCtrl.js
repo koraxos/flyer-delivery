@@ -4,6 +4,7 @@ myApp.controller("accueilCtrl", [
   "$scope",
   "$rootScope",
   "$timeout",
+  "$http",
   "clientService",
   "commandeService",
   function($scope, $rootScope, $timeout, $clientService, $commandeService) {
@@ -14,34 +15,34 @@ myApp.controller("accueilCtrl", [
     $scope.isOther = false;
     console.log($scope.isOther);
 
-    $clientService.getMe().then(
-      function(rep) {
-        $timeout(function() {
-          $scope.client = rep.client;
-          $scope.commande = rep.commande;
-          $scope.zones = rep.commande.zones.map(function(zone) {
-            var villeName = zone["Ville"].replace("_", " ");
-            return {
-              Ville: zone["Ville"],
-              name: villeName[0].toUpperCase() + villeName.substr(1),
-              region: zone["region"],
-              brut: zone["brut"],
-              net: zone["net"]
-            };
-          });
-          var format = $scope.commande.format;
-          if (format != "A4" && format != "A5" && format != "A6")
-            $scope.formatAutre = format;
-          $scope.calcSum();
-          runDatepicker();
-          $scope.$apply();
-        }, 150);
-      },
-      function(err) {
-        console.warn(err);
-        toastr.error(err.statusText);
-      }
-    );
+    // $clientService.getMe().then(
+    //   function(rep) {
+    //     $timeout(function() {
+    //       $scope.client = rep.client;
+    //       $scope.commande = rep.commande;
+    //       $scope.zones = rep.commande.zones.map(function(zone) {
+    //         var villeName = zone["Ville"].replace("_", " ");
+    //         return {
+    //           Ville: zone["Ville"],
+    //           name: villeName[0].toUpperCase() + villeName.substr(1),
+    //           region: zone["region"],
+    //           brut: zone["brut"],
+    //           net: zone["net"]
+    //         };
+    //       });
+    //       var format = $scope.commande.format;
+    //       if (format != "A4" && format != "A5" && format != "A6")
+    //         $scope.formatAutre = format;
+    //       $scope.calcSum();
+    //       runDatepicker();
+    //       $scope.$apply();
+    //     }, 150);
+    //   },
+    //   function(err) {
+    //     console.warn(err);
+    //     toastr.error(err.statusText);
+    //   }
+    // );
 
     $scope.$watch("commande.distribution", function(newValue, oldValue) {
       console.log("commande", newValue, oldValue);
@@ -285,13 +286,28 @@ myApp.controller("commandeCtrl", [
       console.log("commande", $rootScope.commande);
       console.log("scope", $scope);
 
-      // if (!path || path === undefined) path = $scope.path;
-      // $clientService
-      //   .modif($scope.client._id, $scope.client)
-      //   .then(function(client) {
-      //     angular.copy(client, $scope.client);
-      //     $rootScope.go(path);
-      //   });
+      var request = {};
+
+      var commande = $rootScope.commande;
+      commande.zones = commande.zones.map(_z => {
+        var res = Object.assign({}, _z);
+        var formattedRegion = "";
+        if (_z.region === "nord") formattedRegion = "Nord";
+        if (_z.region === "nordEst") formattedRegion = "Nord Est";
+        if (_z.region === "est") formattedRegion = "Est";
+        if (_z.region === "sudEst") formattedRegion = "Sud Est";
+        if (_z.region === "sud") formattedRegion = "Sud";
+        if (_z.region === "sudOuest") formattedRegion = "Sud Ouest";
+        if (_z.region === "ouest") formattedRegion = "Ouest";
+        res.formattedRegion = formattedRegion;
+
+        return res;
+      });
+
+      request.commande = commande;
+      request.client = $scope.client;
+
+      $commandeService.sendMail(request);
     };
   }
 ]);

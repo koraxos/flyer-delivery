@@ -4,7 +4,7 @@ module.exports = {
   seed: false,
   mongo: {
     uri:
-      "mongodb://heroku_7n5dd6qj:gqjdi671c8d92cf4jid69jmbal@ds123584.mlab.com:23584/heroku_7n5dd6qj"
+      "mongodb://heroku_jvx8vrm9:v681m0ub3eom64vk9mjdhls9ft@ds127376.mlab.com:27376/heroku_jvx8vrm9"
   },
   website: "http://127.0.0.1:8084",
   email: "frere.thibaud@gmail.com",

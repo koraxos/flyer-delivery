@@ -6,7 +6,7 @@ module.exports = {
     uri:
       "mongodb://heroku_jvx8vrm9:v681m0ub3eom64vk9mjdhls9ft@ds127376.mlab.com:27376/heroku_jvx8vrm9"
   },
-  website: "https://app.distral.lu",
+  website: "https://distribeco.fr",
   email: "frere.thibaud@gmail.com",
   rib: {
     adresse: "ZARE Ouest îlot 16 L - 4384 Ehlerange  ",

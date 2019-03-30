@@ -17,6 +17,20 @@ angular.module("commande.services", []).service("commandeService", [
           }
         );
       },
+      sendMail: function(data) {
+        debugger;
+        return $http.post("/api/commande/sendMail", { data: data }).then(
+          function(response) {
+            console.log("RESPONSE", response);
+            return $q.when(response.data);
+          },
+          function(err) {
+            console.log("ERROR", err);
+            if (err.status == 404) return $q.reject("non trouvé");
+            return $q.reject(err);
+          }
+        );
+      },
 
       getMe: function() {
         debugger;

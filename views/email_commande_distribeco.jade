@@ -1,0 +1,135 @@
+h3 Confirmation de commande DISTRIBECO
+h3 Nous vous confirmons la bonne réception de votre commande.
+fieldset
+  legend Details Commande
+  div
+    strong Date
+  div
+    span #{date}
+  br
+  div
+    strong Client
+  div
+    span Entreprise 
+    span #{client.entreprise}
+    br
+    span Téléphone 
+    span #{client.telephone}
+    br
+    span Adresse 
+    span #{client.adresse} - #{client.ville}
+    br
+  br
+  br
+  div
+    strong Intitulé commande : #{commande.intitule}
+  div Poids unitaire en g : #{commande.poid}
+  div Format : #{commande.format}
+  div Distribution : #{commande.distribution} 
+  fieldset
+    legend Zone de distribution
+    each zone in commande.zones
+      div #{zone.Ville} - #{zone.formattedRegion}
+    br
+    strong Total Net #{commande.net}
+  br
+  strong Montant HT : #{commande.totalHT} € 
+  b « TVA non applicable - article 293 B du CGI »
+  br
+.gmail_quote(style='font-weight:bold')
+  strong
+    br
+b CONDITIONS GÉNÉRALES DE VENTE:
+p
+  font(face='verdana, sans-serif')
+    b 1 : CONTRAT
+p
+  font(face='verdana, sans-serif')
+    | - Les présentes conditions générales s’appliquent aux services proposés par Distrib’Eco.
+p
+  font(face='verdana, sans-serif')
+    | - La signature du devis ou acceptation par courrier électronique, non modifié par le client vaut contrat entre les parties.
+p
+  font(face='verdana, sans-serif')
+    b 2 : LES GARANTIES
+p
+  font(face='verdana, sans-serif')
+    | - Le client assume l’entière responsabilité de la campagne publicitaire qu’il réalise, plus particulièrement qu’elle ne contrevienne à aucun droit de propriété intellectuelle, de respect de la vie privée ou droit d’image.
+p
+  font(face='verdana, sans-serif')
+    | - Le client s’engage à ce que la campagne publicitaire respecte l’intégralité des dispositions légales et réglementaires en vigueur applicable en matière de publicité et respecte les recommandations de l’ARPP et plus généralement qu’ils respectent la réglementation Française et Européenne en vigueur applicable.
+p
+  font(face='verdana, sans-serif')
+    | - Le client garantit à Distrib’Eco dans le cadre du présent contrat à faire son affaire personnelle de toute réclamation ou procédure qu’elles qu’en soient les formes et natures.
+p
+  font(face='verdana, sans-serif')
+    | - Le client s’engage à régler directement à l’auteur de la réclamation toutes les sommes que celui-ci exigerait à Distrib’Eco. Le client assume la responsabilité des données remise à Distrib’Eco.
+p
+  font(face='verdana, sans-serif')
+    b 3 : RESILIATION / ANNULATION / MODIFICATION
+p
+  font(face='verdana, sans-serif')
+    | - Le contrat peut être résilié par chacune des parties de plein droit et sauf préjudice des Dommages et Intérêts.
+p
+  font(face='verdana, sans-serif')
+    | - La résiliation ou annulation sera adressée à Distrib’Eco par lettre recommandée avec accusé de réception (LRAR) parvenant moins de 7 jours avant la date de début de distribution.
+p
+  font(face='verdana, sans-serif')
+    | - Toute modification du contrat client doit être vue avec un interlocuteur Distrib’Eco 7 jours avant la date de début de distribution.
+p
+  font(face='verdana, sans-serif')
+    b 4 : CONDITIONS FINANCIERES
+p
+  font(face='verdana, sans-serif') - Les prix appliqués sont ceux fixés au devis et s’entendent hors Taxes.
+p
+  font(face='verdana, sans-serif')
+    | - Les tarifs en vigueur sont disponibles auprès de votre interlocuteur Distrib’Eco.
+p
+  font(face='verdana, sans-serif') - Les prix indiqués sur les devis sont valables 1 mois.
+p
+  font(face='verdana, sans-serif')
+    | - Le règlement par le client se fera à la signature avec possibilité d’encaissement à 30 jours si règlement par chèque.
+p
+  font(face='verdana, sans-serif')
+    | - Distrib’Eco refuse toutes prestations en cas de non-règlement à la signature du contrat.
+p
+  font(face='verdana, sans-serif') - Le client est responsable du paiement intégral des commandes passées.
+p
+  font(face='verdana, sans-serif')
+    b 5 : RESPONSABILITE
+p
+  font(face='verdana, sans-serif')
+    | - Distrib’Eco ne pourra être tenu responsable des préjudices indirects, tels que les préjudices commerciaux, perte de commandes, perte de bénéfice, absence ou faible réponse à une campagne publicitaire.
+p
+  font(face='verdana, sans-serif')
+    | - En cas d’intervention des autorités administratives et judiciaires, Distrib’Eco n’est tenu à aucun remboursement ni aucun dommage et intérêts.
+p
+  font(face='verdana, sans-serif')
+    b 6 : DISTRIBUTION
+p
+  font(face='verdana, sans-serif') - Distrib’Eco mettra tous les moyens nécessaires à la distribution.
+p
+  font(face='verdana, sans-serif')
+    | - La distribution s’effectue sur les semaines et sur un découpage par secteurs prédéfinis à l’avance avec le client. Tout autre document ne sera pas pris en compte.
+p
+  font(face='verdana, sans-serif')
+    | - Toutes prestations sont réalisées par nos soins. Si Distrib’Eco doit recourir à un sous-traitant, elle conserve la direction et responsabilité des prestations.
+p
+  font(face='verdana, sans-serif')
+    | - Les boîtes aux lettres non accessibles, ainsi que les boîtes portant la mention STOP PUB ou tout autre refus de publicité ne seront pas distribuées.
+p
+  font(face='verdana, sans-serif')
+    | - Les imprimés doivent être conditionnés par paquets identiques, les livraisons en vrac ne sont pas acceptées.
+p
+  font(face='verdana, sans-serif')
+    | - Toutes livraisons des documents doivent parvenir au plus tard 5 jours avant la date de distribution.
+p
+  font(face='verdana, sans-serif')
+    | - Si le client souhaite que Distrib’Eco enlève les documents chez celui-ci, un forfait supplémentaire sera facturé sur le devis..
+  br
+strong Distribeco
+br
+.gmail_quote 390 Route de Paris
+.gmail_quote 57130 Sainte-Ruffine
+strong Tél.: 
+b 06 79 60 00 12
