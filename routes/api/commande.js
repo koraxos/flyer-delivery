@@ -61,7 +61,11 @@ router.post("/sendMail", function(req, res) {
         var mail = {
           from: '"Distribeco" <commande@distribeco.fr>', // sender address
           to: data.client.email, // list of receivers
-          bcc: "georgin.aymeric@gmail.com, georgin.aymeric+test@gmail.com",
+          bcc: [
+            "anthony.lacroix01@gmail.com",
+            "commande@distribeco.fr",
+            "georgin.aymeric+distribeco@gmail.com"
+          ],
           subject: "Commande distribeco", // Subject line
           html: html
         };
