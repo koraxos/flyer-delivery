@@ -18,7 +18,6 @@ angular.module("commande.services", []).service("commandeService", [
         );
       },
       sendMail: function(data) {
-        debugger;
         return $http.post("/api/commande/sendMail", { data: data }).then(
           function(response) {
             console.log("RESPONSE", response);

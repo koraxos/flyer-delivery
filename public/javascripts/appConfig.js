@@ -62,16 +62,16 @@ myApp.run(function(
   $rootScope.current = false;
   $rootScope.msie = false;
 
-  clientService.loadLang().then(
-    function(data) {
-      $rootScope.langData = data.langs;
-      $rootScope.lang = data.client.lang;
-    },
-    function(err) {
-      console.warn(err);
-      toastr.error(err.statusText);
-    }
-  );
+  // clientService.loadLang().then(
+  //   function(data) {
+  //     $rootScope.langData = data.langs;
+  //     $rootScope.lang = data.client.lang;
+  //   },
+  //   function(err) {
+  //     console.warn(err);
+  //     toastr.error(err.statusText);
+  //   }
+  // );
 
   $rootScope.$on("$locationChangeStart", function(event, next, current) {
     $rootScope.loading = true;
@@ -133,6 +133,11 @@ myApp.config(function($routeProvider, $locationProvider) {
     .when("/commande", {
       templateUrl: "/commande",
       controller: "commandeCtrl",
+      cache: true
+    })
+    .when("/success", {
+      templateUrl: "/success",
+      controller: "accueilCtrl",
       cache: true
     })
     .when("/paiement", {

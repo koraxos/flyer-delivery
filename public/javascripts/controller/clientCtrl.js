@@ -307,7 +307,15 @@ myApp.controller("commandeCtrl", [
       request.commande = commande;
       request.client = $scope.client;
 
-      $commandeService.sendMail(request);
+      $commandeService
+        .sendMail(request)
+        .then(res => {
+          debugger;
+          $rootScope.go("/success");
+        })
+        .catch(err => {
+          debugger;
+        });
     };
   }
 ]);

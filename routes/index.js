@@ -37,6 +37,11 @@ router.get("/commande", function(req, res) {
   res.render("commande", { req: req, title: "Distribeco - Commander" });
 });
 
+router.get("/success", function(req, res) {
+  // if (!req.xhr || req.headers.accept.indexOf("json") < -1) res.redirect("/");
+  res.render("success", { req: req, title: "Distribeco - Accueil" });
+});
+
 router.get("/paiement", function(req, res) {
   if (!req.xhr || req.headers.accept.indexOf("json") < -1) res.redirect("/");
 
