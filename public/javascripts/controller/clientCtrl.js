@@ -62,7 +62,7 @@ myApp.controller("accueilCtrl", [
         },
         function(err) {
           console.warn(err);
-          toastr.error(err.statusText);
+          // toastr.error(err.statusText);
         }
       );
     };
@@ -397,7 +397,7 @@ myApp.controller("paiementCtrl", [
         },
         function(err) {
           console.warn(err);
-          toastr.error(err.statusText);
+          // toastr.error(err.statusText);
           return false;
         }
       );
@@ -470,7 +470,7 @@ myApp.controller("validationCtrl", [
       },
       function(err) {
         console.warn(err);
-        toastr.error(err.statusText);
+        // toastr.error(err.statusText);
         next();
       }
     );
@@ -496,7 +496,7 @@ myApp.controller("reglementCtrl", [
       },
       function(err) {
         console.warn(err);
-        toastr.error(err.statusText);
+        // toastr.error(err.statusText);
         next();
       }
     );
