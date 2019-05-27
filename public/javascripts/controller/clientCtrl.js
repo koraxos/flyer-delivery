@@ -195,7 +195,7 @@ myApp.controller("accueilCtrl", [
 
       console.log("TARGGGET", e);
 
-      if ($scope.national) {
+      if (e && e.target.id === "national" && $scope.national) {
         $scope["ouest"] = true;
         $scope["nord"] = true;
         $scope["nordEst"] = true;
