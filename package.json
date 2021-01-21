@@ -53,7 +53,7 @@
     "ripe": "^0.2.1",
     "serve-favicon": "^2.4.5",
     "shuffle-array": "^1.0.1",
-    "socket.io": "^2.0.3",
+    "socket.io": "^2.4.0",
     "static-favicon": "~1.0.0",
     "stripe": "^5.8.0",
     "underscore": "^1.8.3",
