@@ -40,7 +40,7 @@
     "loadash": "^1.0.0",
     "mangopay-cardregistration-js-kit": "^1.2.2",
     "mangopay2-nodejs-sdk": "^1.7.0",
-    "moment": "^2.19.1",
+    "moment": "^2.29.2",
     "mongoose": "^4.13.17",
     "mongoose-extend-schema": "^1.0.0",
     "mongoose-float": "^1.0.2",
