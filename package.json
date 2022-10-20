@@ -41,7 +41,7 @@
     "mangopay-cardregistration-js-kit": "^1.2.2",
     "mangopay2-nodejs-sdk": "^1.7.0",
     "moment": "^2.19.1",
-    "mongoose": "^4.13.17",
+    "mongoose": "^4.13.21",
     "mongoose-extend-schema": "^1.0.0",
     "mongoose-float": "^1.0.2",
     "morgan": "~1.0.0",
