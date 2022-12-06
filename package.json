@@ -14,7 +14,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.1",
-    "body-parser": "~1.0.0",
+    "body-parser": "~1.20.1",
     "chalk": "^2.1.0",
     "compress": "^0.99.0",
     "compression": "^1.7.1",
@@ -29,7 +29,7 @@
     "debug": "~0.7.4",
     "email-templates": "^2.1.0",
     "errorhandler": "^1.5.0",
-    "express": "~4.0.0",
+    "express": "~4.18.2",
     "express-brute": "^1.0.1",
     "express-brute-mongo": "^1.0.0",
     "express-session": "^1.15.6",
@@ -61,13 +61,13 @@
     "voilab-pdf-table": "^0.4.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.13",
+    "browser-sync": "^2.27.10",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-jade": "^1.1.0",
     "gulp-jshint": "^2.0.4",
     "gulp-less": "^3.3.2",
-    "gulp-livereload": "^3.8.1",
+    "gulp-livereload": "^4.0.2",
     "gulp-minify-css": "^1.2.4",
     "gulp-nodemon": "^2.2.1",
     "gulp-open": "^2.0.0",
