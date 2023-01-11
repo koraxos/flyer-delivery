@@ -26,7 +26,7 @@
     "csv-generate": "^2.0.2",
     "csv-parse": "^2.5.0",
     "csv-stringify": "^3.0.0",
-    "debug": "~0.7.4",
+    "debug": "~2.6.9",
     "email-templates": "^2.1.0",
     "errorhandler": "^1.5.0",
     "express": "~4.0.0",
